@@ -1,0 +1,233 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
+import javax.swing.JPanel;
+import javax.swing.JInternalFrame;
+
+
+public class MyFirstApplication {
+
+	private JFrame frmGradeBook;
+	private JTextField box2;
+	private JTextField box1;
+	private JTextField box4;
+	private JTextField box3;
+	private JTextField box6;
+	private JTextField box5;
+	private JTextField total1;
+	private JTextField total2;
+	private JTextField total3;
+	private JTextField txtTotal;
+	private JButton btnTotal;
+
+	
+	// Launch the application.
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MyFirstApplication window = new MyFirstApplication();
+					window.frmGradeBook.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	// Create the application.
+	public MyFirstApplication() {
+		initialize();
+	}
+
+	// Initialize the contents of the frame.
+	private void initialize() {
+		frmGradeBook = new JFrame();
+		frmGradeBook.setTitle("Grade Book v1.0");
+		frmGradeBook.setBounds(100, 100, 450, 300);
+		frmGradeBook.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmGradeBook.getContentPane().setLayout(null);
+		
+		JButton button = new JButton("=");		
+		button.setBounds(278, 41, 48, 23);
+		frmGradeBook.getContentPane().add(button);
+		
+		box2 = new JTextField();
+		box2.setToolTipText("10% = 10\r\netc...");
+		box2.setBounds(220, 41, 48, 23);
+		frmGradeBook.getContentPane().add(box2);
+		box2.setColumns(10);
+				
+		JLabel lblNewLabel_1 = new JLabel("x");
+		lblNewLabel_1.setBounds(194, 45, 16, 14);
+		frmGradeBook.getContentPane().add(lblNewLabel_1);
+		
+		box1 = new JTextField();
+		box1.setToolTipText("Enter total Test grades");
+		box1.setBounds(126, 42, 48, 19);
+		frmGradeBook.getContentPane().add(box1);
+		box1.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("Tests");
+		lblNewLabel_2.setBounds(45, 45, 68, 14);
+		frmGradeBook.getContentPane().add(lblNewLabel_2);
+		
+		JButton button_1 = new JButton("=");		
+		button_1.setBounds(278, 84, 48, 23);
+		frmGradeBook.getContentPane().add(button_1);
+		
+		box4 = new JTextField();
+		box4.setToolTipText("10% = 10\r\netc...");
+		box4.setColumns(10);
+		box4.setBounds(220, 84, 48, 23);
+		frmGradeBook.getContentPane().add(box4);
+		
+		JLabel lblX = new JLabel("x");
+		lblX.setBounds(194, 88, 16, 14);
+		frmGradeBook.getContentPane().add(lblX);
+		
+		box3 = new JTextField();
+		box3.setToolTipText("Enter total Quiz grades");
+		box3.setColumns(10);
+		box3.setBounds(126, 85, 48, 19);
+		frmGradeBook.getContentPane().add(box3);
+		
+		JLabel lblQuizzes = new JLabel("Quizzes");
+		lblQuizzes.setBounds(45, 88, 68, 14);
+		frmGradeBook.getContentPane().add(lblQuizzes);
+		
+		JButton button_2 = new JButton("=");
+		button_2.setBounds(278, 130, 48, 23);
+		frmGradeBook.getContentPane().add(button_2);
+		
+		box6 = new JTextField();
+		box6.setToolTipText("10% = 10\r\netc...");
+		box6.setColumns(10);
+		box6.setBounds(220, 130, 48, 23);
+		frmGradeBook.getContentPane().add(box6);
+		
+		JLabel lblX_1 = new JLabel("x");
+		lblX_1.setBounds(194, 134, 16, 14);
+		frmGradeBook.getContentPane().add(lblX_1);
+		
+		box5 = new JTextField();
+		box5.setToolTipText("Enter Homework grade");
+		box5.setColumns(10);
+		box5.setBounds(126, 131, 48, 19);
+		frmGradeBook.getContentPane().add(box5);
+		
+		JLabel lblHomework = new JLabel("Homework");
+		lblHomework.setBounds(45, 134, 68, 14);
+		frmGradeBook.getContentPane().add(lblHomework);
+		
+		total1 = new JTextField();
+		total1.setEditable(false);
+		total1.setColumns(10);
+		total1.setBounds(342, 41, 48, 23);
+		frmGradeBook.getContentPane().add(total1);
+		
+		total2 = new JTextField();
+		total2.setEditable(false);
+		total2.setColumns(10);
+		total2.setBounds(342, 84, 48, 23);
+		frmGradeBook.getContentPane().add(total2);
+		
+		total3 = new JTextField();
+		total3.setEditable(false);
+		total3.setColumns(10);
+		total3.setBounds(342, 130, 48, 23);
+		frmGradeBook.getContentPane().add(total3);
+		
+		txtTotal = new JTextField();
+		txtTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTotal.setText("Total and Grade wll display here");
+		txtTotal.setEditable(false);
+		txtTotal.setColumns(10);
+		txtTotal.setBounds(86, 208, 258, 42);
+		frmGradeBook.getContentPane().add(txtTotal);
+		
+		btnTotal = new JButton("=");
+		btnTotal.setToolTipText("Before clicking make sure that the percentages are correct");
+		btnTotal.setBounds(146, 164, 142, 23);
+		frmGradeBook.getContentPane().add(btnTotal);
+		
+		// Calculates the 1st row
+		button.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				
+				//Gets input
+				double input1 = Double.parseDouble(box1.getText());
+				double input2 = Double.parseDouble(box2.getText());
+				
+				// Converts as percentages
+				input1 = input1 * .01; 
+				input2 = input2 * .01; 
+				double solution = input1 * input2; // gets the final grade (grade/10%)
+				total1.setText("" + solution);
+			}
+		});
+				
+		// Calculates the 2nd row
+		button_1.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				//Gets input
+				double input1 = Double.parseDouble(box3.getText());
+				double input2 = Double.parseDouble(box4.getText());
+				
+				// Converts as percentages
+				input1 = input1 * .01; 
+				input2 = input2 * .01; 
+				double solution = input1 * input2; // gets the final grade (grade/10%)
+				
+				total2.setText("" + solution);
+			}
+		});
+	
+		// Calculates the 3rd row
+		button_2.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				//Gets input
+				double input1 = Double.parseDouble(box5.getText());
+				double input2 = Double.parseDouble(box6.getText());
+				
+				// Converts as percentages
+				input1 = input1 * .01; 
+				input2 = input2 * .01; 
+				double solution = input1 * input2; // gets the final grade (grade/10%)
+				total3.setText("" + solution);
+			}
+		});
+	
+		// Calculates the total
+		btnTotal.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				//panel.setVisible(true);
+				
+				// Gets outputs
+				double output1 = Double.parseDouble(total1.getText());
+				double output2 = Double.parseDouble(total2.getText());
+				double output3 = Double.parseDouble(total3.getText());
+				
+				// Calculates the total grades
+				DecimalFormat decim = new DecimalFormat("0.00");
+				double sum = (output1 + output2 + output3) * 100;
+				
+				txtTotal.setText("" + decim.format(sum));
+			}
+		});
+	}
+}
